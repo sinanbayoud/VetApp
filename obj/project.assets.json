@@ -586,11 +586,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\sinan\\Desktop\\PetDesk\\PetDesk.csproj",
+      "projectUniqueName": "C:\\Users\\sinan\\Desktop\\New folder\\VetApp\\PetDesk.csproj",
       "projectName": "PetDesk",
-      "projectPath": "c:\\Users\\sinan\\Desktop\\PetDesk\\PetDesk.csproj",
+      "projectPath": "C:\\Users\\sinan\\Desktop\\New folder\\VetApp\\PetDesk.csproj",
       "packagesPath": "C:\\Users\\sinan\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\sinan\\Desktop\\PetDesk\\obj\\",
+      "outputPath": "C:\\Users\\sinan\\Desktop\\New folder\\VetApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sinan\\AppData\\Roaming\\NuGet\\NuGet.Config",
