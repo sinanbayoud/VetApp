@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-modal';
+import DateTimePicker from 'react-datetime-picker';
 
 import '../styles.css';
 
@@ -10,6 +11,7 @@ function AppointmentTable() {
   //display a "loading" phrase if no table data is fetched
   const [loadingState, setLoadingState] = useState(true);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [value, onChange] = useState(new Date());
 
   var subtitle;
 
@@ -19,13 +21,12 @@ function AppointmentTable() {
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
+    subtitle.style.color = '#0';
   }
 
   function closeModal() {
     setIsOpen(false);
   }
-
 
   /**
    * Async function that will fetch the data for the appointment table, and
@@ -56,20 +57,26 @@ function AppointmentTable() {
     toast.success("Confirmed Appointment For " + name);
   }
 
-  function reschedule() {
+  function reschedule(apptTime) {
     openModal();
+  }
+
+  function newDateSubmitted(){
     toast.warning("Rescheduled Appointment Succesfully");
   }
 
   function renderModal() {
     const customStyles = {
       content: {
+        width: '40%',
+        height: '75%',
         top: '50%',
         left: '50%',
         right: 'auto',
         bottom: 'auto',
         marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
+        transform: 'translate(-50%, -50%)',
+        textAlign: 'left'
       }
     };
 
@@ -80,14 +87,21 @@ function AppointmentTable() {
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Rescheduling Modal"
         >
-          <h2 ref={_subtitle => (subtitle = _subtitle)}>Hello</h2>
-          <button onClick={closeModal}>&times;</button>
-          <div>I am a modal</div>
+          <button className="close" onClick={closeModal}>&times;</button>
+          <h2 ref={_subtitle => (subtitle = _subtitle)}>Choose a Date:</h2>
+          <div>Enter the alternative time:</div>
+          <div>
+            <DateTimePicker
+              onChange={onChange}
+              value={value}
+              disableClock={true}
+            />
+          </div>
+
           <form>
-            <input />
-            <button>Submit</button>
+            <button className="submit-button" onClick={newDateSubmitted}>Submit</button>
           </form>
         </Modal>
       </div>
@@ -127,10 +141,10 @@ function AppointmentTable() {
               <td>{appt.appointmentType}</td>
               <td>{new Date(appt.requestedDateTime).toLocaleDateString("en-US", options)}</td>
               <td>
-                <button className="btn btn-warning" onClick={() => { reschedule() }}>Reschedule</button>
+                <button className="btn btn-warning" onClick={() => { reschedule(appt.appointmentId, appt.animalName) }}>Reschedule</button>
               </td>
               <td>
-                <button className="btn btn-success" onClick={() => { confirm(appt.appointmentId, appt.animalName) }}>Confirm</button>
+                <button className="btn btn-success" onClick={() => { confirm(appt.appointmentId, appt.animalName, appt.requestedDateTime) }}>Confirm</button>
               </td>
             </tr>
           )}

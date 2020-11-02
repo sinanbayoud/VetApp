@@ -40,9 +40,16 @@ tbody tr:hover {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close:hover, .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+
+.submit-button {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  background-color: lightblue;
+  border-radius: 10%;
 }
