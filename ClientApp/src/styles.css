@@ -1,0 +1,48 @@
+code {
+  color: #E01A76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.background {
+  text-align: center;
+  background-color: white;
+}
+
+tbody tr:hover {
+  background-color: lightblue;
+}
+
+.table thead th {
+  background-color: lightgreen;
+  vertical-align: initial;
+  border-bottom: 2px solid #080808;
+}
+
+.modal {
+  background: green;
+  position: absolute;
+  float: left;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
